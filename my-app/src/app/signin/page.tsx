@@ -57,11 +57,11 @@ export default function Signin() {
 
   if(isloggedin){
     return (
-   
-      <Dashbord/>
+      
+        <Dashbord />
+    
     )
-  }else{
-
+  }
 
   return (
     
@@ -272,5 +272,4 @@ export default function Signin() {
       />
     </CssVarsProvider>
   );
-}
 }
