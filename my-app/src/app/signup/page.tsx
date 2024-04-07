@@ -17,7 +17,7 @@ import Stack from '@mui/joy/Stack';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
-import {  signInWithEmailAndPassword} from 'firebase/auth';
+import {  createUserWithEmailAndPassword} from 'firebase/auth';
 import { auth } from '@/app/firebase/config'
 
 
@@ -47,7 +47,7 @@ function ColorSchemeToggle(props: IconButtonProps) {
   );
 }
 
-export default function signin() {
+export default function signup() {
 
 
   const [email, setemail] = React.useState('');
@@ -132,12 +132,12 @@ export default function signin() {
             <Stack gap={4} sx={{ mb: 2 }}>
               <Stack gap={1}>
                 <Typography component="h1" level="h1">
-                  Sign in
+                  Sign Up
                 </Typography>
                 <Typography level="body-sm">
-                  New to company?{' '}
-                  <Link href="/signup" level="title-sm">
-                    Sign up!
+                  Do you have already an account?{' '}
+                  <Link href="/signin" level="title-sm">
+                    Sign In!
                   </Link>
                 </Typography>
               </Stack>
@@ -160,16 +160,18 @@ export default function signin() {
                 <form
                 onSubmit={(e)=>{
                   e.preventDefault();
-                 signInWithEmailAndPassword(auth, email, password)
-                  .then((e) => {
-                    
-                    alert("Sign in successful");
+                  createUserWithEmailAndPassword (auth,email, password)
+                  .then(() => {
+                    // Signed up 
+                 alert("Signed up");
+                    // ...
                   })
                   .catch((error) => {
-                    alert("Sign in successfwwul");
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
                   });
-
-                } 
+                }
               }
                  
                   
@@ -191,9 +193,7 @@ export default function signin() {
                     }}
                   >
                     
-                    <Link level="title-sm" href="#replace-with-a-link">
-                      Forgot your password?
-                    </Link>
+                    
                   </Box>
                   <Button type="submit" fullWidth>
                     Sign in
