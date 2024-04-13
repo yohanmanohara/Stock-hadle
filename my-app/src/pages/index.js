@@ -7,7 +7,7 @@ export default function Home() {
   return (
    
     <>
-    <h1>HAPPY NEW YEAR</h1>
+    <h1>ඔබට සුභ අලුත් අවුරුද්දක් වේවා</h1>
 <div class="fireworks">
   <div class="firework">
     <div class="explosion">
